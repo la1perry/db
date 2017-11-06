@@ -1,10 +1,18 @@
-// ***to clarify - the problem I am having is no matter what callback or promise I use, 
-// it always returns either [] or undefined
 
 
-// require('console.table');
+// this works to insert********************
 
-// const promise=require('promise');
+// connection.connect(function(err){
+// if(err) throw err;
+// console.log('connected');
+// let sql="INSERT INTO employees(id, name, location) VALUES(1,'Jane','Canada')";
+// connection.query(sql, function(err,result){
+//     console.log('inserted');
+// });
+// });
+
+
+
 
 const mysql=require('mysql');
 
@@ -15,15 +23,60 @@ let connection=mysql.createConnection({
     database:'Ecommerce_Platform',
     port:'3306',
     charset:'utf8'
-})
-connection.connect(function(err){
-    if(err)throw err;
-    console.log('connected');
-})
-connection.query('SELECT * FROM employees', function(err, rows, fields){
-    if(err) throw err;
-    console.log(rows);
 });
+
+
+
+function getData(callback){
+    connection.connect();
+    connection.query('SELECT * FROM employees', function(err, rows, fields){
+        if(err)throw err;
+        // console.log(fields);
+        console.log(rows[0].name)
+        return callback(rows);
+    })
+}
+getData(res=>{
+    console.log(res);
+})
+
+
+
+
+
+
+
+// const http=require('http');
+
+// require('console.table');
+
+// const promise=require('promise');
+
+
+// http.createServer(function(req,res){
+//     console.log('running');
+//     connection.query('SELECT * FROM employees', function (err, rows, fields){
+//         if(err)throw err;
+//         console.log('#ofentries=' +rows.length);
+//         res.writeHead(200,{'Content-Type': 'application/json'});
+//         res.end(JSON.stringify(rows));
+//         res.end();
+//     })
+// }).listen(8080);
+
+// connection.connect(function(err){
+//     if(err)throw err;
+//     console.log('connected');
+//     connection.query('SELECT * FROM employees').then(rows=>{
+//         console.log(rows);
+//     })
+// })
+
+
+// connection.query('SELECT * FROM employees', function(err, rows, fields){
+//     if(err) throw err;
+//     console.log(rows);
+// });
 
 // const mysql=require('mysql');
 // let connection=mysql.createConnection({
