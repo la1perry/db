@@ -1,3 +1,7 @@
+// ***to clarify - the problem I am having is no matter what callback or promise I use, 
+// it always returns either [] or undefined
+
+
 // require('console.table');
 
 // const promise=require('promise');
