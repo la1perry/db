@@ -5,20 +5,20 @@
 const mysql=require('mysql');
 
 let connection=mysql.createConnection({
-    host: '*******.cmwfjedpl1zq.us-west-2.rds.amazonaws.com',
+    host: '********.cmwfjedpl1zq.us-west-2.rds.amazonaws.com',
     user:'root',
     password:'',
     database:'Ecommerce_Platform',
     port:'3306',
-    // charset:'utf8'
+    charset:'utf8'
 })
 connection.connect(function(err){
     if(err)throw err;
     console.log('connected');
 })
-connection.query('SELECT * FROM Employee', function(err, results, fields){
+connection.query('SELECT * FROM employees', function(err, rows, fields){
     if(err) throw err;
-    console.log(results[0]);
+    console.log(rows);
 });
 
 // const mysql=require('mysql');
