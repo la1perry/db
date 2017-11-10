@@ -17,9 +17,9 @@
 const mysql=require('mysql');
 
 let connection=mysql.createConnection({
-    host: '********.cmwfjedpl1zq.us-west-2.rds.amazonaws.com',
+    host: 'wmdd4920.cmwfjedpl1zq.us-west-2.rds.amazonaws.com',
     user:'root',
-    password:'',
+    password:'wmdd4920',
     database:'Ecommerce_Platform',
     port:'3306',
     charset:'utf8'
@@ -27,18 +27,15 @@ let connection=mysql.createConnection({
 
 
 
-function getData(callback){
-    connection.connect();
-    connection.query('SELECT * FROM employees', function(err, rows, fields){
-        if(err)throw err;
-        // console.log(fields);
-        console.log(rows[0].name)
-        return callback(rows);
-    })
-}
-getData(res=>{
-    console.log(res);
+function getData(){
+
+connection.connect();
+connection.query('Select * FROM employees', function(err, rows){
+    if(err) throw err;
+    console.log(rows);
 })
+};
+getData();
 
 
 
@@ -46,12 +43,26 @@ getData(res=>{
 
 
 
-// const http=require('http');
+
+
+// function getData(callback){
+//     connection.connect();
+//     connection.query('SELECT * FROM employees', function(err, rows, fields){
+//         if(err)throw err;
+//         // console.log(fields);
+//         console.log(rows[0].name)
+//         return callback(rows);
+//     })
+// }
+// getData(res=>{
+//     console.log(res);
+// })
+
 
 // require('console.table');
+// const http=require('http');
 
 // const promise=require('promise');
-
 
 // http.createServer(function(req,res){
 //     console.log('running');
